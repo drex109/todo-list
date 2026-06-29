@@ -16,34 +16,48 @@ const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '6/24/2026
 const trim = createTodo('Trim Apple Tree', 'Apple Tree is due for its annual trim', '6/24/2026', 'high');
 console.log(lawn);
 
-const projects = [];
-const createProject = (name, todos = []) => {
+const app = (() => {
+    const projects = [];
     
-    const addTodo = (todo) => {
-        todos.push(todo);
-    }
-
-    const deleteTodo = (id) => {
-        const index = todos.findIndex(currentTodo => currentTodo.id === id);
-        if (index !== -1) {
-            todos.splice(index, 1);
-            console.log('todo deleted')
-        } else {
-            console.log('ERROR: no todo by that id found')
+    const createProject = (name, todos = []) => {
+    
+        const addTodo = (todo) => {
+            todos.push(todo);
         }
-    }
 
-    const editTodo = (todo) => {
+        const deleteTodo = (id) => {
+            const index = todos.findIndex(currentTodo => currentTodo.id === id);
+            if (index !== -1) {
+                todos.splice(index, 1);
+                console.log('todo deleted')
+            } else {
+                console.log('ERROR: no todo by that id found')
+            }
+        }
 
-    }
+        const editTodo = (todo) => {
 
-    projects.push(this)
+        }
 
-    return { name, todos, addTodo, deleteTodo, editTodo }
+        return { name, todos, addTodo, deleteTodo, editTodo }
     
 }
 
-const landscaping = createProject('Landscaping')
+    const addProject = (project) => {
+        projects.push(project)
+    }
+
+    const readProjects = () => {
+        return projects
+    }
+
+    return { createProject, addProject, readProjects }
+})()
+
+
+
+const landscaping = app.createProject('Landscaping');
+app.addProject(landscaping)
 landscaping.addTodo(lawn)
 landscaping.addTodo(weeds)
 landscaping.addTodo(trim)
@@ -51,7 +65,7 @@ console.log(landscaping)
 
 landscaping.deleteTodo(weeds.id)
 console.log(landscaping)
-console.log(projects)
+console.log(app.readProjects())
 
 const displayProjects = () => {
 
