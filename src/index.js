@@ -11,15 +11,7 @@ const createTodo = (title, description, dueDate, priority, complete = false, id 
     }
 }
 
-const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and need mowing', '6/20/26', 'high');
-const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '6/24/2026', 'high');
-const trim = createTodo('Trim Apple Tree', 'Apple Tree is due for its annual trim', '6/24/2026', 'high');
-console.log(lawn);
-
-const app = (() => {
-    const projects = [];
-    
-    const createProject = (name, todos = []) => {
+const createProject = (name, todos = [], id = crypto.randomUUID()) => {
     
         const addTodo = (todo) => {
             todos.push(todo);
@@ -39,10 +31,13 @@ const app = (() => {
 
         }
 
-        return { name, todos, addTodo, deleteTodo, editTodo }
+        return { name, todos, id, addTodo, deleteTodo, editTodo }
     
 }
 
+const projectManager = (() => {
+    const projects = [];
+    
     const addProject = (project) => {
         projects.push(project)
     }
@@ -54,18 +49,30 @@ const app = (() => {
     return { createProject, addProject, readProjects }
 })()
 
+const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and need mowing', '6/20/26', 'high');
+const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '6/24/2026', 'high');
+const trim = createTodo('Trim Apple Tree', 'Apple Tree is due for its annual trim', '6/24/2026', 'high');
+console.log(lawn);
+const kill = createTodo('Kill', 'Get a single kill', '6/30/2026', 'low');
 
+const landscaping = createProject('Landscaping');
+landscaping.addTodo(lawn);
+landscaping.addTodo(weeds);
+landscaping.addTodo(trim);
 
-const landscaping = app.createProject('Landscaping');
-app.addProject(landscaping)
-landscaping.addTodo(lawn)
-landscaping.addTodo(weeds)
-landscaping.addTodo(trim)
-console.log(landscaping)
+projectManager.addProject(landscaping);
+console.log(landscaping);
 
 landscaping.deleteTodo(weeds.id)
 console.log(landscaping)
-console.log(app.readProjects())
+
+const assassinate = createProject('Assassinate');
+assassinate.addTodo(kill);
+
+projectManager.addProject(assassinate);
+
+console.log(projectManager.readProjects());
+
 
 const displayProjects = () => {
 
