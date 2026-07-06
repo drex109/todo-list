@@ -43,10 +43,10 @@ const projectManager = (() => {
     }
 
     const readProjects = () => {
-        return projects
+        return [...projects]
     }
 
-    return { createProject, addProject, readProjects }
+    return { addProject, readProjects }
 })()
 
 const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and need mowing', '6/20/26', 'high');
