@@ -1,53 +1,7 @@
 import "./style.css";
-
-const createTodo = (title, description, dueDate, priority, complete = false, id = crypto.randomUUID()) => {
-    return { 
-        title,
-        description,
-        dueDate,
-        priority,
-        complete,
-        id
-    }
-}
-
-const createProject = (name, todos = [], id = crypto.randomUUID()) => {
-    
-        const addTodo = (todo) => {
-            todos.push(todo);
-        }
-
-        const deleteTodo = (id) => {
-            const index = todos.findIndex(currentTodo => currentTodo.id === id);
-            if (index !== -1) {
-                todos.splice(index, 1);
-                console.log('todo deleted')
-            } else {
-                console.log('ERROR: no todo by that id found')
-            }
-        }
-
-        const editTodo = (todo) => {
-
-        }
-
-        return { name, todos, id, addTodo, deleteTodo, editTodo }
-    
-}
-
-const projectManager = (() => {
-    const projects = [];
-    
-    const addProject = (project) => {
-        projects.push(project)
-    }
-
-    const readProjects = () => {
-        return [...projects]
-    }
-
-    return { addProject, readProjects }
-})()
+import { createTodo } from "./todo";
+import { createProject } from "./project";
+import { projectManager } from "./projectManager";
 
 const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and need mowing', '6/20/26', 'high');
 const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '6/24/2026', 'high');
@@ -73,8 +27,3 @@ projectManager.addProject(assassinate);
 
 console.log(projectManager.readProjects());
 
-
-const displayProjects = () => {
-
-
-}
