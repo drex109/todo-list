@@ -18,7 +18,11 @@ const createProject = (name, todos = [], id = crypto.randomUUID()) => {
 
         }
 
-        return { name, todos, id, addTodo, deleteTodo, editTodo }
+        const completeTodo = (todo) => {
+            todo.complete = true;
+        }
+
+        return { name, todos, id, addTodo, deleteTodo, editTodo, completeTodo }
     
 }
 

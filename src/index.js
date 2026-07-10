@@ -20,6 +20,8 @@ console.log(landscaping);
 landscaping.deleteTodo(weeds.id)
 console.log(landscaping)
 
+landscaping.completeTodo(lawn);
+
 const assassinate = createProject('Assassinate');
 assassinate.addTodo(kill);
 
