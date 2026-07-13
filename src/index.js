@@ -2,6 +2,7 @@ import "./style.css";
 import { createTodo } from "./todo";
 import { createProject } from "./project";
 import { projectManager } from "./projectManager";
+import { renderProjects } from "./dom";
 
 const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and need mowing', '6/20/26', 'high');
 const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '6/24/2026', 'high');
@@ -29,3 +30,4 @@ projectManager.addProject(assassinate);
 
 console.log(projectManager.readProjects());
 
+renderProjects(projectManager.readProjects())
