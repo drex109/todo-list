@@ -1,4 +1,4 @@
-const createProject = (name, todos = [], id = crypto.randomUUID()) => {
+const createProject = (title, todos = [], id = crypto.randomUUID()) => {
     
         const addTodo = (todo) => {
             todos.push(todo);
@@ -22,7 +22,7 @@ const createProject = (name, todos = [], id = crypto.randomUUID()) => {
             todo.complete = true;
         }
 
-        return { name, todos, id, addTodo, deleteTodo, editTodo, completeTodo }
+        return { title, todos, id, addTodo, deleteTodo, editTodo, completeTodo }
     
 }
 
