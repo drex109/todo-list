@@ -60,7 +60,16 @@ export const renderProjects = (projectsData) => {
 
             todo.appendChild(todoCheckbox)
             check.addEventListener('change', function(e) {
-                
+                todosData[i].toggleComplete();
+
+                if(todosData[i].complete) {
+                    label.textContent = 'Completed: Yes'
+                } else {
+                    label.textContent = 'Completed: No'
+                }
+                // check.checked = todosData[i].complete;
+                check.value = todosData[i].complete;
+                console.log(todosData[i].complete)
             })
         }
         project.appendChild(projectTodos);

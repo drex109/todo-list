@@ -5,7 +5,11 @@ const createTodo = (title, description, dueDate, priority, complete = false, id 
         dueDate,
         priority,
         complete,
-        id
+        id,
+        toggleComplete() {
+            this.complete = !this.complete;
+            return this.complete;
+        }
     }
 }
 
