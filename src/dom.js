@@ -67,7 +67,7 @@ export const renderProjects = (projectsData) => {
                 } else {
                     label.textContent = 'Completed: No'
                 }
-                // check.checked = todosData[i].complete;
+                
                 check.value = todosData[i].complete;
                 console.log(todosData[i].complete)
             })
@@ -76,10 +76,4 @@ export const renderProjects = (projectsData) => {
 
         projectContainer.appendChild(project)
     }
-}
-
-
-const renderTodos = () => {
-
-    
 }
