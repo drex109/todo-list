@@ -19,7 +19,7 @@ export const renderProjects = (projectsData) => {
             todo.setAttribute('data-uuid', todosData[i].id)
             projectTodos.appendChild(todo);
 
-            const todoTitle = document.createElement('h4');
+            const todoTitle = document.createElement('h2');
             todoTitle.classList.add('todo-title');
             todoTitle.textContent = todosData[i].title;
             todo.appendChild(todoTitle);
