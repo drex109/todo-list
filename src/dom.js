@@ -5,7 +5,12 @@ export const renderProjects = (projectsData) => {
         project.classList.add('project');
         project.setAttribute('data-uuid', projectsData[i].id);
 
-        const projectTitle = document.createElement('h1');
+        let projectTitle;
+        if (projectsData[i].title.length >= 14) {
+            projectTitle = document.createElement('h3')
+        } else {
+            projectTitle = document.createElement('h1');
+        }
         projectTitle.classList.add('project-title');
         projectTitle.textContent = projectsData[i].title;
         project.appendChild(projectTitle);
