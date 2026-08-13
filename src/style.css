@@ -16,9 +16,22 @@ body {
     grid-template-rows: 1fr auto;
     align-items: center;
 }
-#header {
+
+#header{ 
+    display: grid;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+#header h1 {
     text-align: center;
     font-size: 60px;
+}
+#header button {
+    height: 25px;
+    width: 80px;
+    font-size: 20px;
+    margin: auto;
 }
 
 #projects {
@@ -57,7 +70,10 @@ body {
     padding: .5rem 1rem;
 }
 .todo-title {
+    display: grid;
     border-bottom: 1px white solid;
+    height: 30px;
+    align-items: center;
 }
 .todo-description {
     font-size: 14px;

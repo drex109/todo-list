@@ -14,6 +14,11 @@ export const renderProjects = (projectsData) => {
         projectTitle.classList.add('project-title');
         projectTitle.textContent = projectsData[i].title;
         project.appendChild(projectTitle);
+
+        const projectEditButton = document.createElement('button');
+        projectEditButton.classList.add('edit');
+        projectEditButton.textContent = 'Edit';
+
         
         const projectTodos = document.createElement('div');
         projectTodos.classList.add('todos');
@@ -24,7 +29,12 @@ export const renderProjects = (projectsData) => {
             todo.setAttribute('data-uuid', todosData[i].id)
             projectTodos.appendChild(todo);
 
-            const todoTitle = document.createElement('h2');
+            let todoTitle;
+            if (todosData[i].title.length <= 8) {
+                todoTitle = document.createElement('h2');
+            } else {
+                todoTitle = document.createElement('h4')
+            }
             todoTitle.classList.add('todo-title');
             todoTitle.textContent = todosData[i].title;
             todo.appendChild(todoTitle);
