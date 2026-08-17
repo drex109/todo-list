@@ -69,12 +69,30 @@ body {
     margin-bottom: 15px;
     padding: .5rem 1rem;
 }
+.todo-title-container{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: 1px white solid;
+}
 .todo-title {
     display: grid;
-    border-bottom: 1px white solid;
+    
     height: 30px;
     align-items: center;
 }
+.delete-todo{
+    background: none;
+    border: none;
+    color: white;
+    width: 2rem;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.delete-todo:hover {
+    color: rgb(163, 163, 163)
+}
+
 .todo-description {
     font-size: 14px;
     font-style: italic;

@@ -29,15 +29,29 @@ export const renderProjects = (projectsData) => {
             todo.setAttribute('data-uuid', todosData[i].id)
             projectTodos.appendChild(todo);
 
+            const todoTitleCon = document.createElement('div');
+            todoTitleCon.classList.add('todo-title-container');
+
             let todoTitle;
             if (todosData[i].title.length <= 8) {
                 todoTitle = document.createElement('h2');
             } else {
-                todoTitle = document.createElement('h4')
+                todoTitle = document.createElement('h4');
             }
             todoTitle.classList.add('todo-title');
             todoTitle.textContent = todosData[i].title;
-            todo.appendChild(todoTitle);
+            todoTitleCon.appendChild(todoTitle);
+
+            const todoDeleteButton = document.createElement('button');
+            todoDeleteButton.classList.add('delete-todo');
+            todoDeleteButton.setAttribute('title', 'Delete todo');
+            todoDeleteButton.textContent = 'X';
+            // todoDeleteButton.addEventListener('click', () => {
+            //     projectsData[i].deleteTodo(todosData[i].id);
+            // })
+            todoTitleCon.appendChild(todoDeleteButton);
+            
+            todo.appendChild(todoTitleCon);
 
             const todoDescription = document.createElement('p');
             todoDescription.classList.add('todo-description');
