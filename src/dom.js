@@ -1,18 +1,19 @@
 export const renderProjects = (projectsData) => {
     const projectContainer = document.querySelector('#projects');
-    for (let i = 0; i < projectsData.length; i++) {
+    projectContainer.replaceChildren();
+    for (let projectIndex = 0; projectIndex < projectsData.length; projectIndex++) {
         const project = document.createElement('div');
         project.classList.add('project');
-        project.setAttribute('data-uuid', projectsData[i].id);
+        project.setAttribute('data-uuid', projectsData[projectIndex].id);
 
         let projectTitle;
-        if (projectsData[i].title.length >= 14) {
+        if (projectsData[projectIndex].title.length >= 14) {
             projectTitle = document.createElement('h3')
         } else {
             projectTitle = document.createElement('h1');
         }
         projectTitle.classList.add('project-title');
-        projectTitle.textContent = projectsData[i].title;
+        projectTitle.textContent = projectsData[projectIndex].title;
         project.appendChild(projectTitle);
 
         const projectEditButton = document.createElement('button');
@@ -22,60 +23,65 @@ export const renderProjects = (projectsData) => {
         
         const projectTodos = document.createElement('div');
         projectTodos.classList.add('todos');
-        let todosData = projectsData[i].todos;
-        for (let i = 0; i < todosData.length; i++) {
+        let todosData = projectsData[projectIndex].todos;
+        for (let todosIndex = 0; todosIndex < todosData.length; todosIndex++) {
             const todo = document.createElement('div');
             todo.classList.add('todo');
-            todo.setAttribute('data-uuid', todosData[i].id)
+            todo.setAttribute('data-uuid', todosData[todosIndex].id)
             projectTodos.appendChild(todo);
 
             const todoTitleCon = document.createElement('div');
             todoTitleCon.classList.add('todo-title-container');
 
             let todoTitle;
-            if (todosData[i].title.length <= 8) {
+            if (todosData[todosIndex].title.length <= 8) {
                 todoTitle = document.createElement('h2');
             } else {
                 todoTitle = document.createElement('h4');
             }
             todoTitle.classList.add('todo-title');
-            todoTitle.textContent = todosData[i].title;
+            todoTitle.textContent = todosData[todosIndex].title;
             todoTitleCon.appendChild(todoTitle);
 
             const todoDeleteButton = document.createElement('button');
             todoDeleteButton.classList.add('delete-todo');
             todoDeleteButton.setAttribute('title', 'Delete todo');
             todoDeleteButton.textContent = 'X';
-            // todoDeleteButton.addEventListener('click', () => {
-            //     projectsData[i].deleteTodo(todosData[i].id);
-            // })
+            todoDeleteButton.addEventListener('click', function(e) {
+                projectsData[projectIndex].deleteTodo(
+                    e.target.closest('.todo').dataset.uuid
+                );
+                
+                renderProjects(projectsData)
+                console.log(todosData)
+            })
             todoTitleCon.appendChild(todoDeleteButton);
             
             todo.appendChild(todoTitleCon);
 
             const todoDescription = document.createElement('p');
             todoDescription.classList.add('todo-description');
-            todoDescription.textContent = todosData[i].description;
+            todoDescription.textContent = todosData[todosIndex].description;
             todo.appendChild(todoDescription);
 
             const todoDue = document.createElement('p');
             todoDue.classList.add('due-date');
-            todoDue.textContent = `Due Date: ${todosData[i].dueDate}`;
+            todoDue.textContent = `Due Date: ${todosData[todosIndex].dueDate}`;
             todo.appendChild(todoDue);
 
             const todoPriority = document.createElement('p');
             todoPriority.classList.add('priority');
-            todoPriority.textContent = `Priority: ${todosData[i].priority}`;
+            todoPriority.textContent = `Priority: ${todosData[todosIndex].priority}`;
             todo.appendChild(todoPriority);
 
             const todoCheckbox = document.createElement('div');
             todoCheckbox.classList = 'complete-toggle'
             const check = document.createElement('input');
             check.type = 'checkbox';
-            check.id = 'check ' + todosData[i].id;
+            check.id = 'check ' + todosData[todosIndex].id;
             check.classList = 'check'
 
-            let haveCompleted = todosData[i].complete
+            let haveCompleted = todosData[todosIndex].complete
             check.value = haveCompleted
             check.checked = haveCompleted;
             haveCompleted ? haveCompleted = 'Yes' : haveCompleted = 'No';
@@ -89,16 +95,16 @@ export const renderProjects = (projectsData) => {
 
             todo.appendChild(todoCheckbox)
             check.addEventListener('change', function(e) {
-                todosData[i].toggleComplete();
+                todosData[todosIndex].toggleComplete();
 
-                if(todosData[i].complete) {
+                if(todosData[todosIndex].complete) {
                     label.textContent = 'Completed: Yes'
                 } else {
                     label.textContent = 'Completed: No'
                 }
                 
-                check.value = todosData[i].complete;
-                console.log(todosData[i].complete)
+                check.value = todosData[todosIndex].complete;
+                console.log(todosData[todosIndex].complete)
             })
         }
         project.appendChild(projectTodos);

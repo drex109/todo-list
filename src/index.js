@@ -36,4 +36,8 @@ projectManager.addProject(nephs)
 
 console.log(projectManager.readProjects());
 
+// todoDeleteButton.addEventListener('click', function(e) {
+//     projectsData[i].deleteTodo(todosData[i].id);
+// })
+
 renderProjects(projectManager.readProjects());
