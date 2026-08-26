@@ -1,3 +1,5 @@
+import { projectManager } from "./projectManager";
+
 export const renderProjects = (projectsData) => {
     const projectContainer = document.querySelector('#projects');
     projectContainer.replaceChildren();
@@ -47,14 +49,23 @@ export const renderProjects = (projectsData) => {
             todoDeleteButton.classList.add('delete-todo');
             todoDeleteButton.setAttribute('title', 'Delete todo');
             todoDeleteButton.textContent = 'X';
+            
             todoDeleteButton.addEventListener('click', function(e) {
                 projectsData[projectIndex].deleteTodo(
                     e.target.closest('.todo').dataset.uuid
                 );
-                
-                renderProjects(projectsData)
+
+                if (todosData.length === 0) {
+                    projectManager.deleteProject(
+                        e.target.closest('.project').dataset.uuid)
+                    console.log(projectsData);
+                    console.log(projectManager.readProjects())
+                } 
+
+                renderProjects(projectManager.readProjects());
                 console.log(todosData)
-            })
+            });
+
             todoTitleCon.appendChild(todoDeleteButton);
             
             todo.appendChild(todoTitleCon);

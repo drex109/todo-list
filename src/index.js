@@ -33,6 +33,7 @@ const watch = createTodo('Watch Nephews Play', 'Watch your nephews play various 
 nephs.addTodo(watch);
 
 projectManager.addProject(nephs)
+// projectManager.deleteProject(nephs.id)
 
 console.log(projectManager.readProjects());
 
