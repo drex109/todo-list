@@ -4,11 +4,11 @@ import { createProject } from "./project";
 import { projectManager } from "./projectManager";
 import { renderProjects } from "./dom";
 
-const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and needs mowing', '7/20/26', 'high');
-const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '7/24/2026', 'high');
-const trim = createTodo('Trim Apple Tree', 'Apple Tree is due for its annual trim', '7/24/2026', 'high');
+const lawn = createTodo('Mow Lawn', 'Lawn is overgrown and needs mowing', '2026', 'high');
+const weeds = createTodo('Weed Garden', 'Garden is overrun by weeds', '2026', 'high');
+const trim = createTodo('Trim Apple Tree', 'Apple Tree is due for its annual trim', '2026', 'high');
 console.log(lawn);
-const kill = createTodo('Kill', 'Get a single kill', '7/26/2026', 'low');
+const kill = createTodo('Kill', 'Get a single kill', '2026', 'low');
 
 const landscaping = createProject('Landscaping');
 landscaping.addTodo(lawn);
@@ -29,7 +29,7 @@ assassinate.addTodo(kill);
 projectManager.addProject(assassinate);
 
 const nephs = createProject('Play games with Nephews');
-const watch = createTodo('Watch Nephews Play', 'Watch your nephews play various video games', '7/29/2026', 'low');
+const watch = createTodo('Watch Nephews Play', 'Watch your nephews play various video games', '2026', 'low');
 nephs.addTodo(watch);
 
 projectManager.addProject(nephs)
