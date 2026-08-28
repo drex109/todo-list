@@ -8,9 +8,28 @@
 <body>
     <div id="header">
         <h1>Doeth</h1>
-        <button>New</button>
+        <button id="open-dialog">New</button>
     </div>
-    
+
+    <div id="form-container">
+        <dialog>
+            <form id="new-project" action="dialog">
+                
+                <div class="inputs">
+                    <label for="project-title">Title</label>
+                    <input id="project-title" name="project-title" type="text" required>
+                </div>
+
+
+                <div id="modal-buttons">
+                    <button id="submit-book" type="submit">Add Book</button>
+                    <button id="close-dialog" type="button">Close</button>
+                </div>
+
+            </form>
+        </dialog>
+    </div>
+
     <div id="projects"></div>
 </body>
 </html>

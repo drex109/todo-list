@@ -1,6 +1,18 @@
 import { projectManager } from "./projectManager";
 
 export const renderProjects = (projectsData) => {
+    const dialog = document.querySelector('dialog');
+    const openDialog = document.querySelector('#open-dialog');
+    const closeDialog = document.querySelector('#close-dialog');
+    const projectForm = document.querySelector('#new-project');
+
+    openDialog.addEventListener('click', function() {
+        dialog.showModal();
+    })
+    closeDialog.addEventListener('click', function() {
+        dialog.close();
+    })
+
     const projectContainer = document.querySelector('#projects');
     projectContainer.replaceChildren();
     for (let projectIndex = 0; projectIndex < projectsData.length; projectIndex++) {
