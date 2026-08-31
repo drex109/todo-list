@@ -1,20 +1,32 @@
 import { projectManager } from "./projectManager";
+import { createProject } from "./project";
+
+const dialog = document.querySelector('dialog');
+const openDialog = document.querySelector('#open-dialog');
+const closeDialog = document.querySelector('#close-dialog');
+const projectForm = document.querySelector('#new-project');
+
+openDialog.addEventListener('click', function() {
+    dialog.showModal();
+})
+closeDialog.addEventListener('click', function() {
+    dialog.close();
+})
+
+projectForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    console.log('SUBMIT')
+    const formData = Object.fromEntries(new FormData(projectForm));
+    const submittedProject = createProject(formData.projectTitle);
+    projectManager.addProject(submittedProject);
+    renderProjects(projectManager.readProjects());
+})
+
 
 export const renderProjects = (projectsData) => {
-    const dialog = document.querySelector('dialog');
-    const openDialog = document.querySelector('#open-dialog');
-    const closeDialog = document.querySelector('#close-dialog');
-    const projectForm = document.querySelector('#new-project');
-
-    openDialog.addEventListener('click', function() {
-        dialog.showModal();
-    })
-    closeDialog.addEventListener('click', function() {
-        dialog.close();
-    })
-
     const projectContainer = document.querySelector('#projects');
     projectContainer.replaceChildren();
+
     for (let projectIndex = 0; projectIndex < projectsData.length; projectIndex++) {
         const project = document.createElement('div');
         project.classList.add('project');

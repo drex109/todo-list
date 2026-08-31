@@ -103,9 +103,9 @@ body {
     padding: 1rem;
     border-radius: 10px;
 }
-.priority, .due-date {
+/* .priority, .due-date {
     
-}
+} */
 .complete-toggle input {
     margin-right: 5px;
 }
