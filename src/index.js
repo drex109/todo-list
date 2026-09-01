@@ -35,10 +35,18 @@ nephs.addTodo(watch);
 projectManager.addProject(nephs)
 // projectManager.deleteProject(nephs.id)
 
-console.log(projectManager.readProjects());
+// const testOne = createProject('Test project');
+// const testTodoOne = createTodo('Testing layout', 'Use methods to create new project with at least one todo for testing purposes', '2026', 'mid');
+// testOne.addTodo(testTodoOne);
+// projectManager.addProject(testOne);
 
-// todoDeleteButton.addEventListener('click', function(e) {
-//     projectsData[i].deleteTodo(todosData[i].id);
-// })
+
+// const testTwo = createProject('Test project');
+// const testTodoTwo = createTodo('Testing layout', 'Use methods to create new project with at least one todo for testing purposes', '2026', 'mid');
+// testTwo.addTodo(testTodoTwo);
+// testTwo.deleteTodo(testTodoTwo.id);
+// projectManager.addProject(testTwo);
+
+console.log(projectManager.readProjects());
 
 renderProjects(projectManager.readProjects());
