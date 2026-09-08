@@ -16,10 +16,45 @@
             <form id="new-project" action="dialog">
                 
                 <div class="inputs">
-                    <label for="project-title">Title</label>
-                    <input id="project-title" name="projectTitle" type="text" required>
+                    <label for="form-project-title">Project Title</label>
+                    <input id="form-project-title" name="formProjectTitle" type="text" required>
                 </div>
 
+                <div id="todo-form">
+                    <p>Todo</p>
+                    
+                    <div class="inputs">
+                        <label for="form-todo-title">Todo Title</label>
+                        <input id="form-todo-title" name="formTodoTitle" type="text" required>
+                    </div>
+
+                    <div class="inputs">
+                        <label for="form-todo-description">Todo Description</label>
+                        <input id="form-todo-description" name="formTodoDescription" type="text" required>
+                    </div>
+
+                    <div class="inputs">
+                        <label for="form-todo-duedate">Due Date</label>
+                        <input id="form-todo-duedate" name="formTodoDueDate" type="text">
+                    </div>
+                    
+                    <fieldset>
+                        <legend>Priorty:</legend>
+                        <div class="inputs">
+                            <label for="todo-priority-high">High</label>
+                            <input id="todo-priority-high" name="formTodoPriority" type="radio" value="high" checked>
+                        </div>
+                        <div class="inputs">
+                            <label for="todo-priority-med">Medium</label>
+                            <input id="todo-priority-med" name="formTodoPriority" type="radio" value="medium">
+                        </div>
+                        <div class="inputs">
+                            <label for="todo-priority-low">Low</label>
+                            <input id="todo-priority-low" name="formTodoPriority" type="radio" value="low">
+                        </div>
+                    </fieldset>
+                </div>
+                
                 <div id="modal-buttons">
                     <button id="submit-project" type="submit">Add Project</button>
                     <button id="close-dialog" type="button">Close</button>

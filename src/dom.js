@@ -17,7 +17,7 @@ projectForm.addEventListener('submit', function(e) {
     e.preventDefault();
     console.log('SUBMIT')
     const formData = Object.fromEntries(new FormData(projectForm));
-    const submittedProject = createProject(formData.projectTitle);
+    const submittedProject = createProject(formData.formProjectTitle);
     projectManager.addProject(submittedProject);
     renderProjects(projectManager.readProjects());
 })
