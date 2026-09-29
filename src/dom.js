@@ -1,5 +1,6 @@
 import { projectManager } from "./projectManager";
 import { createProject } from "./project";
+import { createTodo } from "./todo";
 
 const dialog = document.querySelector('dialog');
 const openDialog = document.querySelector('#open-dialog');
@@ -15,10 +16,19 @@ closeDialog.addEventListener('click', function() {
 
 projectForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    console.log('SUBMIT')
+
+    console.log('SUBMIT');
+
     const formData = Object.fromEntries(new FormData(projectForm));
+
+    console.log(formData)
+
     const submittedProject = createProject(formData.formProjectTitle);
+    const submittedTodo = createTodo(formData.formTodoTitle, formData.formTodoDescription, formData.formTodoDueDate, formData.formTodoPriority);
+    
+    submittedProject.addTodo(submittedTodo);
     projectManager.addProject(submittedProject);
+    
     renderProjects(projectManager.readProjects());
 })
 
